@@ -121,14 +121,14 @@ public class Assert {
         }
     }
     
-    public <T> boolean assertGreaterThan(T o1, T o2, java.util.Comparator<T> comparator) {
+    public <T> void assertGreaterThan(T o1, T o2, java.util.Comparator<T> comparator) {
         if (comparator.compare(o1, o2) < 0)
         {
-            return true;
+            System.out.print(false);
         }
-            
-        return false;
-            
+        {
+            System.out.print(true);
+        }
     }
     
     private static boolean equalsRegardingNull(Object expected, Object actual) {
