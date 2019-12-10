@@ -428,6 +428,11 @@ public class AssertionTest<T> {
         Assert.assertGreaterThan(1.0d, 1.0d, comparator);
     }
 
+    @Test
+    public <T> void greaterThan(T o1, T o2, Comparator<T> comp) {
+        Assert.assertGreaterThan(o1, o2, comp);
+    }
+    
     @Test(expected = AssertionError.class)
     public void notEqualsObjectWithNull() {
         assertEquals(new Object(), null);

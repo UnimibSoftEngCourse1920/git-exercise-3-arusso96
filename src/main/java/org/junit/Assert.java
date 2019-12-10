@@ -124,6 +124,7 @@ public class Assert<T> {
         }
     }
     
+<<<<<<< HEAD
     public static void assertGreaterThan(Object o1, Object o2, Comparator<Object> comparator) {
         if (comparator.compare(o1, o2) < 0)
         {
@@ -131,6 +132,14 @@ public class Assert<T> {
         }
         {
             System.out.print(true);
+=======
+    public static <T> void assertGreaterThan(T o1, T o2, java.util.Comparator<T> comparator) {
+        if (comparator.compare(o1, o2)>0) {
+            System.out.print(true);
+        }
+        else {
+            System.out.print(false);
+>>>>>>> refs/heads/greater-primitives
         }
     }
     
