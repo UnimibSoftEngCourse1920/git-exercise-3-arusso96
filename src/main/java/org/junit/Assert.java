@@ -1,5 +1,7 @@
 package org.junit;
 
+import java.util.Comparator;
+
 import org.hamcrest.Matcher;
 import org.hamcrest.MatcherAssert;
 import org.junit.function.ThrowingRunnable;
@@ -18,11 +20,12 @@ import org.junit.internal.InexactComparisonCriteria;
  *    ...
  *    assertEquals(...);
  * </pre>
+ * @param <T>
  *
  * @see AssertionError
  * @since 4.0
  */
-public class Assert {
+public class Assert<T> {
     /**
      * Protect constructor since it is a static only class
      */
@@ -120,7 +123,17 @@ public class Assert {
             failNotEquals(message, expected, actual);
         }
     }
-
+    
+    public static void assertGreaterThan(Object o1, Object o2, Comparator<Object> comparator) {
+        if (comparator.compare(o1, o2) < 0)
+        {
+            System.out.print(false);
+        }
+        {
+            System.out.print(true);
+        }
+    }
+    
     private static boolean equalsRegardingNull(Object expected, Object actual) {
         if (expected == null) {
             return actual == null;
