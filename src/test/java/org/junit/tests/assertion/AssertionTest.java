@@ -14,6 +14,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 import org.junit.Assert;
 import org.junit.ComparisonFailure;
@@ -22,8 +23,9 @@ import org.junit.internal.ArrayComparisonFailure;
 
 /**
  * Tests for {@link org.junit.Assert}
+ * @param <T>
  */
-public class AssertionTest {
+public class AssertionTest<T> {
 // If you want to use 1.4 assertions, they will be reported correctly.
 // However, you need to add the -ea VM argument when running.
 
@@ -256,6 +258,21 @@ public class AssertionTest {
         assertEquals(1l, 1l);
         assertEquals(1.0, 1.0, 0.0);
         assertEquals(1.0d, 1.0d, 0.0d);
+    }
+    
+    @Test
+    public void greaterThan(Comparator<Object> comparator) {
+        Object o1 = new Object();
+        Assert.assertGreaterThan(o1,o1, comparator);
+        Assert.assertGreaterThan("abc", "abc", comparator);
+        Assert.assertGreaterThan(true, true, comparator);
+        Assert.assertGreaterThan((byte) 1, (byte) 1, comparator);
+        Assert.assertGreaterThan('a', 'a', comparator);
+        Assert.assertGreaterThan((short) 1, (short) 1, comparator);
+        Assert.assertGreaterThan(1, 1, comparator); // int by default, cast is unnecessary
+        Assert.assertGreaterThan(1l, 1l, comparator);
+        Assert.assertGreaterThan(1.0, 1.0, comparator);
+        Assert.assertGreaterThan(1.0d, 1.0d, comparator);
     }
 
     @Test(expected = AssertionError.class)
